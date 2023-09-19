@@ -9,6 +9,7 @@ This is a simple Monty Language interpreter which executes each line in the prov
 handles errors appropriately
 
 **Usage:**
-monty <file>
+
+- monty *file*
 
 This program is written by Ansa and Ayo.
