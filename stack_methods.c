@@ -56,6 +56,7 @@ void _pall(stack_t **stack, unsigned int line_number)
 		printf("%d\n", current->n);
 		current = current->next;
 	}
+	fflush(stdout); /* Flush the output buffer */
 }
 
 /**

@@ -32,9 +32,5 @@ int main(int argc, char **argv)
 
 	fclose(fp);
 
-	/* free the stack in here before the program exits */
-	free(stack);
-	stack = NULL;
-
 	return (EXIT_SUCCESS);
 }

@@ -49,6 +49,7 @@ void (*get_opcode(char *s))(stack_t **stack, unsigned int line_number);
 /* stack_methods.c */
 void _push(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int line_number);
+void _pop(stack_t **stack, unsigned int line_number);
 void free_stackt(stack_t *stack);
 
 #endif /* MONTY_H */

@@ -46,6 +46,8 @@ void monty_interpreter(FILE *f_ptr)
 			strcpy(opcode, "");
 			strcpy(opcode_data, "");
 		}
+		/*free(stack);*/
+		/*stack = NULL;*/
 	}
 }
 
@@ -61,6 +63,7 @@ void (*get_opcode(char *s))(stack_t **stack, unsigned int line_number)
 	instruction_t opcodes[] = {
 		{"push", _push},
 		{"pall", _pall},
+		{"pop", _pop},
 		{NULL, NULL}
 	};
 	size_t i;
