@@ -10,7 +10,6 @@ stack_t *stack = NULL;
  */
 void monty_interpreter(FILE *f_ptr)
 {
-	char opcode[MAX_WORD_LENGTH], opcode_data[MAX_WORD_LENGTH];
 	int word_count, line_numb = 0;
 	char line[MAX_LINE_LENGTH];
 	void (*op_func)(stack_t **stack, unsigned int line_number);
@@ -18,6 +17,8 @@ void monty_interpreter(FILE *f_ptr)
 	/* loop to read each line in the file */
 	while (fgets(line, sizeof(line), f_ptr) != NULL)
 	{
+		char opcode[MAX_WORD_LENGTH], opcode_data[MAX_WORD_LENGTH];
+
 		line_numb++;
 
 		/* get opcode and its data from each line */
