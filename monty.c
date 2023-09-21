@@ -46,9 +46,9 @@ void monty_interpreter(FILE *f_ptr)
 			strcpy(opcode, "");
 			strcpy(opcode_data, "");
 		}
-		/*free(stack);*/
-		/*stack = NULL;*/
 	}
+	free_stackt(stack);
+	stack = NULL;
 }
 
 /**
