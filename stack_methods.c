@@ -59,6 +59,30 @@ void _pall(stack_t **stack, unsigned int line_number)
 }
 
 /**
+ * _pop - pops the first element on the stack
+ * @stack: reference (pointer to pointer) to the stack
+ * @line_number: integer (unused)
+ */
+void _pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *current;
+
+	(void)line_number;
+
+	if (*stack == NULL)
+	{
+		/* Handle the case where the stack is empty */
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	current = *stack;
+	*stack = (*stack)->next;
+
+	free(current);
+}
+
+/**
  * free_stackt - frees a doubly linked stack
  * @stack: reference (pointer) to the start of the stack
  */

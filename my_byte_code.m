@@ -1,0 +1,2 @@
+push w
+pall
