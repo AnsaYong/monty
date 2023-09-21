@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 	/* handle error if more than one argument (filename) is given */
 	if (argc != 2)
 	{
-		fprintf(stderr, "Usage: monty file>\n");
+		fprintf(stderr, "Usage: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 
