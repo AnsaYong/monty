@@ -18,8 +18,6 @@ void monty_interpreter(FILE *f_ptr)
 	/* loop to read each line in the file */
 	while (fgets(line, sizeof(line), f_ptr) != NULL)
 	{
-		line_numb++;
-
 		/* get opcode and its data from each line */
 		word_count = sscanf(line, "%s %s", opcode, opcode_data);
 		if (word_count == 1 || word_count == 2)
@@ -63,7 +61,11 @@ void (*get_opcode(char *s))(stack_t **stack, unsigned int line_number)
 	instruction_t opcodes[] = {
 		{"push", _push},
 		{"pall", _pall},
+		{"pint", _pint},
 		{"pop", _pop},
+		{"swap", _swap},
+		{"add", _add},
+		{"nop", _nop},
 		{NULL, NULL}
 	};
 	size_t i;
