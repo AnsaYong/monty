@@ -18,20 +18,21 @@ void monty_interpreter(FILE *f_ptr)
 	/* loop to read each line in the file */
 	while (fgets(line, sizeof(line), f_ptr) != NULL)
 	{
+		/* handle comments */
+		if (line[0] == '#')
+			continue;
+
 		/* get opcode and its data from each line */
 		word_count = sscanf(line, "%s %s", opcode, opcode_data);
 		if (word_count == 1 || word_count == 2)
 		{
 			op_func = get_opcode(opcode);
-
-			/* check if opcode is valid */
-			if (op_func == NULL)
+			if (op_func == NULL)	/* check if opcode is valid */
 			{
 				fprintf(stderr, "L%d: unknown instruction %s\n",
 						line_numb, opcode);
 				exit(EXIT_FAILURE);
 			}
-
 			/* execute opcode */
 			op_func(&stack, atoi(opcode_data));
 
@@ -66,6 +67,10 @@ void (*get_opcode(char *s))(stack_t **stack, unsigned int line_number)
 		{"swap", _swap},
 		{"add", _add},
 		{"nop", _nop},
+		{"div", _div},
+		{"sub", _sub},
+		{"mul", _mul},
+		{"mod", _mod},
 		{NULL, NULL}
 	};
 	size_t i;

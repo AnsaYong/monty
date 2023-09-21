@@ -11,9 +11,6 @@
 int main(int argc, char **argv)
 {
 	FILE *fp;
-	char *s;
-	char file_name[MAX_WORD_LENGTH];
-	int i = 0;
 
 	/* handle error if more than one argument (filename) is given */
 	if (argc != 2)
@@ -22,22 +19,11 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
-	/* extract the file name from the fullpath variable */
-	s = argv[1];
-	while (*s && *s != '/')
-		s++;
-	s++;
-	while (*s)
-	{
-		file_name[i++] = *s;
-		s++;
-	}
-
 	/* open the file and handle error on failure */
 	fp = fopen(argv[1], "r");
 	if (fp == NULL)
 	{
-		fprintf(stderr, "Error: Can't open file %s\n", file_name);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 
