@@ -36,6 +36,15 @@ void monty_interpreter(FILE *f_ptr)
 
 			/* execute opcode */
 			op_func(&stack, atoi(opcode_data));
+
+			/* Clear opcode and opcode_data for the next iteration */
+			strcpy(opcode, "");
+			strcpy(opcode_data, "");
+		}
+		else
+		{
+			strcpy(opcode, "");
+			strcpy(opcode_data, "");
 		}
 	}
 }
