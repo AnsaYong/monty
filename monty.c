@@ -18,8 +18,7 @@ void monty_interpreter(FILE *f_ptr)
 	/* loop to read each line in the file */
 	while (fgets(line, sizeof(line), f_ptr) != NULL)
 	{
-		/* handle comments */
-		if (line[0] == '#')
+		if (line[0] == '#')	/* handle comments */
 			continue;
 
 		/* get opcode and its data from each line */
@@ -33,10 +32,10 @@ void monty_interpreter(FILE *f_ptr)
 						line_numb, opcode);
 				exit(EXIT_FAILURE);
 			}
-			/* execute opcode */
+			/* execute opcode only if opcode_data is numeric and not 0 */
 			op_func(&stack, atoi(opcode_data));
 
-			/* Clear opcode and opcode_data for the next iteration */
+			/* reset opcode and opcode_data */
 			strcpy(opcode, "");
 			strcpy(opcode_data, "");
 		}

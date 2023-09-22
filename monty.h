@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <string.h>
+#include <stdbool.h>
 
 #define MAX_LINE_LENGTH 1024
 #define MAX_WORD_LENGTH 128
@@ -45,6 +46,7 @@ extern stack_t *stack;
 /* monty.c */
 void monty_interpreter(FILE *f_ptr);
 void (*get_opcode(char *s))(stack_t **stack, unsigned int line_number);
+bool is_numeric(const char *str, int *result);
 
 /* stack_methods.c */
 void _push(stack_t **stack, unsigned int line_number);
