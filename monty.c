@@ -11,7 +11,7 @@ stack_t *stack = NULL;
 void monty_interpreter(FILE *f_ptr)
 {
 	char opcode[MAX_WORD_LENGTH], opcode_data[MAX_WORD_LENGTH];
-	int word_count, line_numb = 0, data_value;
+	int word_count, line_numb = 0;
 	char line[MAX_LINE_LENGTH];
 	void (*op_func)(stack_t **stack, unsigned int line_number);
 
@@ -35,12 +35,6 @@ void monty_interpreter(FILE *f_ptr)
 				exit(EXIT_FAILURE);
 			}
 
-			data_value = atoi(opcode_data);
-			if (data_value == 0 && strcmp(opcode_data, "0") != 0)
-			{
-				fprintf(stderr, "L%d: usage: push integer\n", line_numb);
-				exit(EXIT_FAILURE);
-			}
 			/* execute opcode only if opcode_data is numeric and not 0 */
 			op_func(&stack, atoi(opcode_data));
 
