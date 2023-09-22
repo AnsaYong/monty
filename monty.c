@@ -11,13 +11,15 @@ stack_t *stack = NULL;
 void monty_interpreter(FILE *f_ptr)
 {
 	char opcode[MAX_WORD_LENGTH], opcode_data[MAX_WORD_LENGTH];
-	int word_count, line_numb = 0;
+	int word_count, line_numb = 0, data_value;
 	char line[MAX_LINE_LENGTH];
 	void (*op_func)(stack_t **stack, unsigned int line_number);
 
 	/* loop to read each line in the file */
 	while (fgets(line, sizeof(line), f_ptr) != NULL)
 	{
+		line_numb++;
+
 		if (line[0] == '#')	/* handle comments */
 			continue;
 
@@ -30,6 +32,13 @@ void monty_interpreter(FILE *f_ptr)
 			{
 				fprintf(stderr, "L%d: unknown instruction %s\n",
 						line_numb, opcode);
+				exit(EXIT_FAILURE);
+			}
+
+			data_value = atoi(opcode_data);
+			if (data_value == 0 && strcmp(opcode_data, "0") != 0)
+			{
+				fprintf(stderr, "L%d: usage: push integer\n", line_numb);
 				exit(EXIT_FAILURE);
 			}
 			/* execute opcode only if opcode_data is numeric and not 0 */
@@ -86,3 +95,5 @@ void (*get_opcode(char *s))(stack_t **stack, unsigned int line_number)
 
 	return (NULL);
 }
+
+

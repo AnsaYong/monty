@@ -9,7 +9,7 @@ void _push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_node;
 
-	if (line_number < 1 || line_number > 9)
+	if (line_number < 49 && line_number > 57)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
